@@ -15,27 +15,29 @@ bean definition in your whole projects.
 * You must use Spring Version >= 2.2.X 
 * Download the JAR though Maven Central:
 
+```xml
+<dependency>
+    <groupId>br.com.yes</groupId>
+    <artifactId>spring-boot-starter-dynamodb</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</dependency>
+```
 
-    <dependency>
-        <groupId>br.com.yes</groupId>
-        <artifactId>spring-boot-starter-dynamodb</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </dependency>
-
-* After this you must put modify you Application.java file:
-    
-    
-    @SpringBootApplication
-    @EnableDynamoDBRepositories(basePackages = "<path-to-repository-packeages>")
-    public class Application {
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+* After this, you must add `@EnableDynamoDBRepositories` in your Application.java file:
+```java        
+@SpringBootApplication
+@EnableDynamoDBRepositories(basePackages = "<path-to-repository-packeages>")
+public class Application {
+public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+}
+```
 
 * **Optional** - you can set environments properties to customize DynamoDb values
- 
- 
-    aws.dynamodb.table.prefix 
-    aws.dynamodb.region 
+
+```properties
+aws.dynamodb.table.prefix 
+aws.dynamodb.region 
+```
 
 ## Let's code!!

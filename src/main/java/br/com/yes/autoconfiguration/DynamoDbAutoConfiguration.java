@@ -13,8 +13,8 @@ public class DynamoDbAutoConfiguration {
     private final String tablePrefix;
     private final String region;
 
-    public DynamoDbAutoConfiguration(@Value("${aws.dynamodb.table.prefix}") String tablePrefix,
-                                     @Value("${aws.dynamodb.region}") String region) {
+    public DynamoDbAutoConfiguration(@Value("${aws.dynamodb.table.prefix:}") String tablePrefix,
+                                     @Value("${aws.dynamodb.region:us-east-1}") String region) {
         this.tablePrefix = tablePrefix;
         this.region = region;
     }
@@ -22,7 +22,7 @@ public class DynamoDbAutoConfiguration {
     @Bean
     public AmazonDynamoDB amazonDynamoDB() {
         return AmazonDynamoDBClientBuilder.standard()
-                .withRegion(this.region)
+                .withRegion((this.region))
                 .build();
     }
 
